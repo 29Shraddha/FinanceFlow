@@ -6,7 +6,7 @@ import com.financeflow.entity.User;
 import com.financeflow.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import com.financeflow.exception.InvalidCredentialsException;
 @Service
 public class AuthService {
 
@@ -26,10 +26,10 @@ public class AuthService {
     public LoginResponseDTO login(LoginRequestDTO request){
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+                .orElseThrow(() -> new InvalidCredentialsException("Invalid email or password"));
 
         if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
-            throw new RuntimeException("Invalid email or password");
+            throw new InvalidCredentialsException("Invalid email or password");
         }
 
         String token = jwtService.generateToken(user.getEmail());

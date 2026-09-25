@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.financeflow.dto.UserRequestDTO;
 import com.financeflow.dto.UserResponseDTO;
 import java.time.LocalDateTime;
+import com.financeflow.exception.DuplicateEmailException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 @Service
 public class UserService {
@@ -19,7 +20,9 @@ public class UserService {
     }
 
     public UserResponseDTO saveUser(UserRequestDTO request) {
-
+      if(userRepository.findByEmail(request.getEmail()).isPresent()){
+          throw new DuplicateEmailException("Email already registered");
+      }
         User user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())

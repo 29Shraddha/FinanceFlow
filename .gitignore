@@ -34,3 +34,14 @@ build/
 
 # Local configuration
 application-local.properties
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+
+# Build files
+dist/

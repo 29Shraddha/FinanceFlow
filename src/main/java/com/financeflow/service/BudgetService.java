@@ -17,7 +17,7 @@ public class BudgetService {
         this.budgetRepository = budgetRepository;
     }
 
-    // Add Expense
+    // Add Budget
     public BudgetResponseDTO addBudget(BudgetRequestDTO request) {
 
         Budget budget = Budget.builder()
@@ -52,7 +52,7 @@ public class BudgetService {
     public BudgetResponseDTO getBudgetById(Long id) {
 
         Budget budget = budgetRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Budget not found"));
 
         return BudgetResponseDTO.builder()
                 .id(budget.getId())
@@ -64,7 +64,7 @@ public class BudgetService {
     public BudgetResponseDTO updateBudget(Long id, BudgetRequestDTO request){
 
         Budget budget = budgetRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Budget not found"));
 
         budget.setCategory(request.getCategory());
         budget.setBudgetAmount(request.getBudgetAmount());
@@ -82,7 +82,7 @@ public class BudgetService {
     public void deleteBudget(Long id){
 
         Budget budget = budgetRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Expense not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Budget not found"));
 
         budgetRepository.delete(budget);
 
