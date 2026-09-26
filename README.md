@@ -64,6 +64,19 @@ Exception Handling
  ├── Validation Errors
  └── Resource Not Found Errors
 ```
+### Project Structure
+
+```text
+src/main/java/com/financeflow/
+├── config/          # Application configuration
+├── controller/      # REST API endpoints
+├── dto/             # Data Transfer Objects
+├── entity/          # Database entities
+├── exception/       # Custom exceptions and exception handling
+├── repository/      # Data access layer
+├── security/        # JWT authentication and security
+├── service/         # Business logic
+└── util/             # Utility classes
 
 ## Main API Areas
 
@@ -75,6 +88,29 @@ Exception Handling
 | Income         | Manage income records                    |
 | Budgets        | Manage monthly category budgets          |
 | Dashboard      | Financial summaries and analysis         |
+
+## API Endpoints
+
+| Module         | Method | Endpoint                  | Purpose                         |
+|----------------|--------|---------------------------|---------------------------------|
+| Authentication | POST   | `/api/auth/login`         | Authenticate user and receive JWT |
+| Users          | POST   | `/api/users`              | Register a new user             |
+| Expenses       | POST   | `/api/expenses`           | Create an expense               |
+| Expenses       | GET    | `/api/expenses`           | Get all expenses                |
+| Expenses       | GET    | `/api/expenses/{id}`      | Get an expense by ID            |
+| Expenses       | PUT    | `/api/expenses/{id}`      | Update an expense               |
+| Expenses       | DELETE | `/api/expenses/{id}`      | Delete an expense               |
+| Income         | POST   | `/api/income`             | Create an income record         |
+| Income         | GET    | `/api/income`              | Get all income records          |
+| Income         | GET    | `/api/income/{id}`         | Get an income record by ID      |
+| Income         | PUT    | `/api/income/{id}`         | Update an income record         |
+| Income         | DELETE | `/api/income/{id}`         | Delete an income record         |
+| Budgets        | POST   | `/api/budgets`            | Create a budget                 |
+| Budgets        | GET    | `/api/budgets`             | Get all budgets                 |
+| Budgets        | GET    | `/api/budgets/{id}`        | Get a budget by ID              |
+| Budgets        | PUT    | `/api/budgets/{id}`        | Update a budget                 |
+| Budgets        | DELETE | `/api/budgets/{id}`        | Delete a budget                 |
+| Dashboard      | GET    | `/api/dashboard`           | Retrieve dashboard data         |
 
 ## Configuration
 
